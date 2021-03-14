@@ -21,7 +21,7 @@ class AppTest {
         array.add(1);
         array.add(3);
         array.add(5);
-        assertEquals(false,a.search(array, 2,-1,100) );
+        assertFalse(a.search(array, 2,-1,100) );
     }
 
     @Test void includeJustOne(){
@@ -30,7 +30,7 @@ class AppTest {
         array.add(1);
         array.add(2);
         array.add(5);
-        assertEquals(true,a.search(array, 2,-1,97) );
+        assertTrue(a.search(array, 2,-1,97) );
     }
 
     @Test void moreThanOne(){
@@ -41,7 +41,7 @@ class AppTest {
         array.add(5);
         array.add(2);
         array.add(2);
-        assertEquals(3,a.search(array, 2,-10,100) );
+        assertTrue(a.search(array, 2,-10,100) );
     }
 
     @Test void allOfTheElementsInArrayIsItem(){
@@ -52,7 +52,7 @@ class AppTest {
         array.add(2);
         array.add(2);
         array.add(2);
-        assertEquals(array.size(),a.search(array, 2,-10,100) );
+        assertTrue(a.search(array, 2,-10,100) );
     }
 
     @Test void lowerThanLowerBound(){
@@ -64,7 +64,7 @@ class AppTest {
         array.add(2);
         array.add(3);
         array.add(1);
-        assertEquals(0,a.search(array, 2,3,5));
+        assertFalse(a.search(array, 2,3,5));
     }
     @Test void higherThanHighBound(){
         App a = new App();
@@ -76,6 +76,6 @@ class AppTest {
         array.add(3);
         array.add(10);
         array.add(34);
-        assertEquals(0,a.search(array, 10,3,5));
+        assertFalse(a.search(array, 10,3,5));
     }
 }
