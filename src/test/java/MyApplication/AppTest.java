@@ -44,17 +44,6 @@ class AppTest {
         assertTrue(a.search(array, 2,-10,100) );
     }
 
-    @Test void allOfTheElementsInArrayIsItem(){
-        App a = new App();
-        ArrayList<Integer> array = new ArrayList<>();
-        array.add(2);
-        array.add(2);
-        array.add(2);
-        array.add(2);
-        array.add(2);
-        assertTrue(a.search(array, 2,-10,100) );
-    }
-
     @Test void lowerThanLowerBound(){
         App a = new App();
         ArrayList<Integer> array = new ArrayList<>();
