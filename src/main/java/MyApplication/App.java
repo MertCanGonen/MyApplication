@@ -36,8 +36,6 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
-        int lower = -100;
-        int high = 100;
 
         Route r = new Route(){
             @Override
