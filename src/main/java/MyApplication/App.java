@@ -52,7 +52,6 @@ public class App {
             inputList.add(value);
           }
           sc1.close();
-          System.out.println(inputList);
 
 
           String input2 = req.queryParams("input2").replaceAll("\\s","");
