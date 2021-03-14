@@ -38,19 +38,8 @@ public class App {
 
 
     public static void main(String[] args) {
-        
-        Route r = new Route(){
-            @Override
-            public Object handle(Request request, Response response) throws Exception {
-                return null;
-            }
-        };
 
-        Logger logger = LogManager.getLogger(App.class);
-        int port = Integer.parseInt(System.getenv("PORT"));
-        port(port);
-        logger.error("Current port number:" + port);
-        port(getHerokuAssignedPort());
+        
         
         get("/", (req,res) -> "Hello, World!"); 
 
