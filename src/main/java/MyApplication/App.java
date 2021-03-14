@@ -38,7 +38,7 @@ public class App {
 
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        
         Route r = new Route(){
             @Override
             public Object handle(Request request, Response response) throws Exception {
@@ -52,7 +52,7 @@ public class App {
         logger.error("Current port number:" + port);
         port(getHerokuAssignedPort());
         
-        get("/", (req,res) -> "Hello, World!"); //ekranda sadece bu gozukur.
+        get("/", (req,res) -> "Hello, World!"); 
 
         get("/compute",
             (rq,rs) -> {
