@@ -6,17 +6,13 @@ package MyApplication;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.Route;
 import spark.template.mustache.MustacheTemplateEngine;
 import static spark.Spark.get;
 import static spark.Spark.post;
-import static spark.Spark.port;
+
 
 public class App {
     public String getGreeting() {
@@ -38,11 +34,7 @@ public class App {
 
 
     public static void main(String[] args) {
-
-        
-        
         get("/", (req,res) -> "Hello, World!"); 
-
         get("/compute",
             (rq,rs) -> {
                 Map<String,String> map = new HashMap<String,String>();
@@ -54,9 +46,7 @@ public class App {
             },
             new MustacheTemplateEngine()
         );
-
-        post("/compute",(req,res) -> {
-            
+        post("/compute",(req,res) -> {  
             String input1 = req.queryParams("input1");
             java.util.Scanner sc1 = new java.util.Scanner(input1);
             sc1.useDelimiter("[;\r\n]+");
@@ -85,6 +75,14 @@ public class App {
         },
         new MustacheTemplateEngine()
         );
+
+        get("/compute", (rq, rs) -> {
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("result", "not computed yet!");
+            return new ModelAndView(map, "compute.mustache");
+        },
+        new MustacheTemplateEngine());
+        
    
     }
 
