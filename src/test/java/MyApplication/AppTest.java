@@ -21,7 +21,7 @@ class AppTest {
         array.add(1);
         array.add(3);
         array.add(5);
-        assertEquals(0,a.search(array, 2,-1,100) );
+        assertEquals(false,a.search(array, 2,-1,100) );
     }
 
     @Test void includeJustOne(){
@@ -30,7 +30,7 @@ class AppTest {
         array.add(1);
         array.add(2);
         array.add(5);
-        assertEquals(1,a.search(array, 2,-1,97) );
+        assertEquals(true,a.search(array, 2,-1,97) );
     }
 
     @Test void moreThanOne(){
