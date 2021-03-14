@@ -6,6 +6,8 @@ package MyApplication;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import spark.ModelAndView;
 import spark.Request;
@@ -14,6 +16,7 @@ import spark.Route;
 import spark.template.mustache.MustacheTemplateEngine;
 import static spark.Spark.get;
 import static spark.Spark.post;
+import static spark.Spark.port;
 
 public class App {
     public String getGreeting() {
@@ -42,6 +45,12 @@ public class App {
                 return null;
             }
         };
+
+        Logger logger = LogManager.getLogger(App.class);
+        int port = Integer.parseInt(System.getenv("PORT"));
+        port(port);
+        logger.error("Current port number:" + port);
+        port(getHerokuAssignedPort());
         
         get("/", (req,res) -> "Hello, World!"); //ekranda sadece bu gozukur.
 
@@ -88,8 +97,16 @@ public class App {
         new MustacheTemplateEngine()
         );
    
-   
-   
     }
+
+    static int getHerokuAssignedPort() {
+
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+    }    
 
 }
