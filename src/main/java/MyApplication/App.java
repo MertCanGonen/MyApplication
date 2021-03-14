@@ -49,9 +49,6 @@ public class App {
         get("/compute",
             (rq,rs) -> {
                 Map<String,String> map = new HashMap<String,String>();
-                map.put("In the first form","enter a list of integers seperated by a newline character.");
-                map.put("In the second form", "enter another integer.");
-                map.put("See how many times this whole number appears", "in the given list as a result.");
                 map.put("result", "not computed yet!");
                 return new ModelAndView(map, "compute.mustache");
             },
